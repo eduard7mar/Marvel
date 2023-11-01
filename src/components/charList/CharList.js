@@ -30,7 +30,6 @@ class CharList extends Component {
       .catch(this.onError);
   };
 
-  //for new items
   onCharListLoading = () => {
     this.setState({
       newItemLoading: true,
@@ -59,7 +58,6 @@ class CharList extends Component {
     });
   };
 
-  //used ref
   itemRefs = [];
 
   setRef = (ref) => {
@@ -77,15 +75,18 @@ class CharList extends Component {
   renderItems(arr) {
     const items = arr.map((item, i) => {
       let imgStyle = { objectFit: "cover" };
-      if (item.thumbnail === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg") {
+      if (
+        item.thumbnail ===
+        "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+      ) {
         imgStyle = { objectFit: "unset" };
       }
 
       return (
         <li
           className="char__item"
-          tabIndex={0} //used tabIndex
-          ref={this.setRef} //used ref
+          tabIndex={0}
+          ref={this.setRef}
           key={item.id}
           onClick={() => {
             this.props.onCharSelected(item.id);
